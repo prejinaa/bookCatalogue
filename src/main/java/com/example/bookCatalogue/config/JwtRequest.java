@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @RequiredArgsConstructor
+//here we send the request to jwt
 
 public class JwtRequest implements Serializable {
     @Serial

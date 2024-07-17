@@ -22,7 +22,7 @@ public class JwtUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 User user= userRepo.findByUsername( username);
               if(user==null){
-                  throw  new UsernameNotFoundException("user not found");
+                  throw  new UsernameNotFoundException("user  is not found");
               }
         String role = user.getRole().startsWith("ROLE_") ? user.getRole() : "ROLE_" + user.getRole();
        return org.springframework.security.core.userdetails.User.withUsername(user.getUsername())

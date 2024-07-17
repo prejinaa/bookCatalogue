@@ -37,7 +37,7 @@ public class WebSecurityConfiguration {
                         auth -> auth.requestMatchers("/authenticate","/register").permitAll()
                                 .requestMatchers("api/book/**").hasRole("ADMIN")
                                 .requestMatchers("api/admin/**").hasRole("ADMIN")
-                                .requestMatchers("api/user/**").hasAnyRole("USER")
+                                .requestMatchers("api/user/**").hasAnyRole("USER","ADMIn")
 
                                 .anyRequest().authenticated());
 

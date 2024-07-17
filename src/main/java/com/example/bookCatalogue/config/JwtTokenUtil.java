@@ -32,7 +32,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return buildToken(extraClaims, userDetails, 1000000);
+        return buildToken(extraClaims, userDetails, 86400000);
     }
 
     private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {

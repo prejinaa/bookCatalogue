@@ -2,6 +2,7 @@ package com.example.bookCatalogue.config;
 
 import java.io.Serial;
 import java.io.Serializable;
+//we give token as response
 
 public class JwtResponse implements Serializable {
     @Serial

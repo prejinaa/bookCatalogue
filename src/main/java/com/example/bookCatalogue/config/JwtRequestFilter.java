@@ -16,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 @Component
+// this is part where we check the request is alone with jwt token or not
 
 
 public class JwtRequestFilter extends OncePerRequestFilter {
