@@ -6,6 +6,7 @@ import com.example.bookCatalogue.exception.BookNotFoundException;
 import java.util.List;
 
 public interface BookService {
+
     BookDto createBook(BookDto bookDto);
     BookDto getBookById( Long bookId) throws BookNotFoundException;
     List<BookDto> getBook();

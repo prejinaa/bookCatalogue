@@ -6,7 +6,7 @@ import com.example.bookCatalogue.User.UserRepo;
 import com.example.bookCatalogue.config.JwtRequest;
 import com.example.bookCatalogue.config.JwtResponse;
 import com.example.bookCatalogue.config.JwtTokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -20,22 +20,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 @RestController
+@RequiredArgsConstructor
 
 
 public class JwtAuthenticationController {
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
-    @Autowired
-    private UserRepo userRepo;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final UserDetailsService userDetailsService;
+    private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
     @PostMapping("/register")
 
     public ResponseEntity<?> registerUser(@RequestBody User user) {

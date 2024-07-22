@@ -2,6 +2,8 @@ package com.example.bookCatalogue.config;
 
 import com.example.bookCatalogue.User.User;
 import com.example.bookCatalogue.User.UserRepo;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,10 +16,13 @@ import java.util.Collections;
 // if it exist we extract the name ,password ,and role and create new object of user
 
 @Service
+@RequiredArgsConstructor
+
 
 public class JwtUserDetailService implements UserDetailsService {
-    @Autowired
-    private UserRepo userRepo;
+
+    private final UserRepo userRepo;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
                 User user= userRepo.findByUsername( username);

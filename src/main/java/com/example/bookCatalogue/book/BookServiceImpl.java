@@ -3,18 +3,20 @@ package com.example.bookCatalogue.book;
 import com.example.bookCatalogue.dto.BookDto;
 import com.example.bookCatalogue.exception.BookNotFoundException;
 import com.example.bookCatalogue.mapper.BookMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 
 public class BookServiceImpl implements  BookService{
-    @Autowired
-    private BookRepo bookRepo;
+
+    private final BookRepo bookRepo;
+
+
     @Override
     public BookDto createBook(BookDto bookDto) {
         Book book= BookMapper.mapToBook(bookDto);

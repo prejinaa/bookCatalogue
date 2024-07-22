@@ -1,6 +1,6 @@
 package com.example.bookCatalogue.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@RequiredArgsConstructor
 
 public class WebSecurityConfiguration {
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+
+    private final JwtRequestFilter jwtRequestFilter;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -35,9 +36,9 @@ public class WebSecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         auth -> auth.requestMatchers("/authenticate","/register").permitAll()
-                                .requestMatchers("api/book/**").hasRole("ADMIN")
+                                .requestMatchers("api/v1/book/**").hasRole("ADMIN")
                                 .requestMatchers("api/admin/**").hasRole("ADMIN")
-                                .requestMatchers("api/user/**").hasAnyRole("USER","ADMIn")
+                                .requestMatchers("api/user/**").hasAnyRole("USER","ADMIN")
 
                                 .anyRequest().authenticated());
 
